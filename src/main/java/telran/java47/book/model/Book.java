@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(of = "isbn")
 @Entity
+@Table(name = "BOOK")
 public class Book implements Serializable {
 
 	/**
@@ -33,7 +35,10 @@ public class Book implements Serializable {
 	String isbn;
 	String title;
 	@ManyToMany
-//	@JoinTable(name = "book_authors",joinColumns = @JoinColumn(name = "isbn"),inverseJoinColumns = @JoinColumn(name = "isbn"))
+	@JoinTable(
+			name = "BOOK_AUTHORS",
+			joinColumns = @JoinColumn(name = "BOOK_ISBN"),
+			inverseJoinColumns = @JoinColumn(name = "AUTHOR_NAME"))
 	Set<Author> authors;
 	@ManyToOne
 	Publisher publisher;
