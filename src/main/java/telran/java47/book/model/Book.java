@@ -38,7 +38,7 @@ public class Book implements Serializable {
 	@JoinTable(
 			name = "BOOK_AUTHORS",
 			joinColumns = @JoinColumn(name = "BOOK_ISBN"),
-			inverseJoinColumns = @JoinColumn(name = "AUTHOR_NAME"))
+			inverseJoinColumns = @JoinColumn(name = "AUTHORS_NAME"))
 	Set<Author> authors;
 	@ManyToOne
 	Publisher publisher;
